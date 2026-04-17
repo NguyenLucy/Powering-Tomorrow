@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Powering Tomorrow | UN SDG 7</title>
+  <style>
+    :root {
+      --bg: #08131f;
+      --panel: #0f1f31;
+      --panel-2: #132a42;
+      --card: rgba(16, 38, 60, 0.88);
+      --text: #ecf4ff;
+      --muted: #b9c9da;
+      --line: rgba(255,255,255,0.1);
+      --accent: #f2c94c;
+      --accent-2: #49dcb1;
+      --danger: #ff8f70;
+      --shadow: 0 18px 45px rgba(0,0,0,0.3);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(73,220,177,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(242,201,76,0.12), transparent 24%),
+        linear-gradient(180deg, #07111c 0%, #091827 38%, #07111c 100%);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .container {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(8, 19, 31, 0.85);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 74px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 0.85rem;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), #ffe289);
+      color: #122033;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+      padding: 0.25rem 0.1rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus { color: var(--text); }
+
+    .hero {
+      padding: 5.5rem 0 4rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(73,220,177,0.12);
+      color: #9ef5dd;
+      font-size: 0.86rem;
+      border: 1px solid rgba(73,220,177,0.22);
+      letter-spacing: 0.01em;
+    }
+
+    h1, h2, h3 { line-height: 1.14; margin: 0 0 1rem; }
+    h1 { font-size: clamp(2.3rem, 5vw, 4.5rem); }
+    h2 { font-size: clamp(1.7rem, 3vw, 2.7rem); }
+    h3 { font-size: 1.15rem; }
+    p { margin: 0 0 1rem; color: var(--muted); }
+
+    .hero p.lead {
+      font-size: 1.08rem;
+      max-width: 66ch;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.15rem;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #ffe48d);
+      color: #102134;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-card,
+    .card,
+    .stat,
+    .video-card,
+    .about-card,
+    .progress-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 1.3rem;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      min-height: 420px;
+    }
+
+    .hero-card img {
+      border-radius: 18px;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: rgba(255,255,255,0.03);
+      padding: 1rem;
+      min-height: 420px;
+    }
+
+    section {
+      padding: 2.6rem 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      margin-bottom: 1.3rem;
+    }
+
+    .section-head p {
+      max-width: 62ch;
+      margin: 0;
+    }
+
+    .stats-grid,
+    .targets-grid,
+    .energy-grid,
+    .impact-grid,
+    .actions-grid,
+    .about-grid,
+    .gallery-grid,
+    .video-grid,
+    .progress-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+    .targets-grid { grid-template-columns: repeat(5, 1fr); }
+    .energy-grid { grid-template-columns: repeat(2, 1fr); }
+    .impact-grid,
+    .actions-grid,
+    .video-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+    .progress-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .stat,
+    .card,
+    .about-card,
+    .progress-card {
+      padding: 1.2rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      margin-bottom: 0.7rem;
+      color: #9ef5dd;
+      background: rgba(73,220,177,0.12);
+      border: 1px solid rgba(73,220,177,0.2);
+      border-radius: 999px;
+      padding: 0.28rem 0.6rem;
+    }
+
+    .card ul,
+    .about-card ul,
+    .impact-grid ul,
+    .actions-grid ul {
+      padding-left: 1.1rem;
+      margin: 0.7rem 0 0;
+      color: var(--muted);
+    }
+
+    .card li,
+    .about-card li,
+    .impact-grid li,
+    .actions-grid li { margin-bottom: 0.55rem; }
+
+    .target-number {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+
+    .energy-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .energy-card img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .energy-content {
+      padding: 1.2rem;
+    }
+
+    .energy-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.9rem 0;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      border-radius: 999px;
+      padding: 0.28rem 0.58rem;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .progress-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 18px;
+      background: #ffffff;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .progress-card strong {
+      color: var(--text);
+    }
+
+    .video-card {
+      overflow: hidden;
+    }
+
+    .video-card iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 0;
+      display: block;
+    }
+
+    .video-copy { padding: 1rem 1rem 1.2rem; }
+
+    .quote {
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1rem 1rem 1.1rem;
+      background: rgba(242,201,76,0.07);
+      border-radius: 0 18px 18px 0;
+      color: var(--text);
+      margin: 1rem 0 0;
+    }
+
+    .references-list {
+      margin: 0;
+      padding-left: 1.4rem;
+      color: var(--muted);
+    }
+
+    .references-list li {
+      margin-bottom: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer {
+      padding: 3rem 0 4rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .footer small { display: block; }
+
+    @media (max-width: 1100px) {
+      .stats-grid,
+      .targets-grid,
+      .gallery-grid,
+      .impact-grid,
+      .actions-grid,
+      .progress-grid,
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-grid,
+      .about-grid,
+      .energy-grid { grid-template-columns: 1fr; }
+      .hero-card,
+      .hero-card img { min-height: 320px; }
+    }
+
+    @media (max-width: 760px) {
+      .nav { align-items: flex-start; padding: 1rem 0; }
+      .nav, .section-head { flex-direction: column; }
+      .nav-links { justify-content: flex-start; }
+      .stats-grid,
+      .targets-grid,
+      .gallery-grid,
+      .impact-grid,
+      .actions-grid,
+      .video-grid,
+      .energy-grid,
+      .progress-grid { grid-template-columns: 1fr; }
+      .energy-card { grid-template-columns: 1fr; }
+      .energy-card img { height: 240px; }
+      .hero { padding-top: 3.8rem; }
+      h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <div class="brand-badge">7</div>
+        <div class="brand-copy">
+          <strong>Powering Tomorrow</strong>
+          <span>UN Sustainable Development Goal 7</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#goal">Goal 7</a>
+        <a href="#targets">Targets</a>
+        <a href="#energy">Energy Types</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#nuclear">Nuclear</a>
+        <a href="#community">Community</a>
+        <a href="#about">About Us</a>
+        <a href="#references">References</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Affordable • Reliable • Sustainable • Modern</div>
+          <h1>Clean energy is not only a climate issue. It is an engineering, economic, and community issue.</h1>
+          <p class="lead">
+            Sustainable Development Goal 7 calls on the world to ensure access to affordable, reliable,
+            sustainable, and modern energy for all. For college students, that means more than cleaner power.
+            It means healthier communities, stronger infrastructure, better career pathways, and a more resilient future.[1], [2]
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#get-involved">How to get involved</a>
+            <a class="btn btn-secondary" href="#references">IEEE references</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="https://www.un.org/sustainabledevelopment/wp-content/uploads/2018/05/E_SDG-goals_icons-individual-rgb-07.png" alt="UN Sustainable Development Goal 7 icon" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container stats-grid">
+        <article class="stat">
+          <strong>Goals</strong>
+          <p>Five core SDG 7 targets define the energy access, renewables, efficiency, cooperation, and infrastructure agenda.[1]</p>
+        </article>
+        <article class="stat">
+          <strong>Timeline</strong>
+          <p>2030 is the target year for reaching universal modern energy access and accelerating systemwide energy progress.[1]</p>
+        </article>
+        <article class="stat">
+          <strong>Methods</strong>
+          <p>Engineering turns policy goals into real systems: generation, storage, grids, materials, safety, and operations.[2], [9]</p>
+        </article>
+        <article class="stat">
+          <strong>Demographics</strong>
+          <p>Students can enter the field through research labs, internships, campus projects, design teams, and policy work.[14], [15], [16]</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="goal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">What Goal 7 stands for</span>
+            <h2>What Is UN Sustainable Development Goal 7?</h2>
+          </div>
+          <p>
+            Goal 7 is the United Nations commitment to “ensure access to affordable, reliable,
+            sustainable and modern energy for all.” The goal matters because energy underpins education,
+            healthcare, communications, economic development, and quality of life.[1], [2]
+          </p>
+        </div>
+        <div class="card">
+          <p>
+            SDG 7 is not limited to adding more electricity. It focuses on whether energy is accessible,
+            dependable, cleaner to use, and supported by the infrastructure and international partnerships needed
+            to scale solutions. In practice, that means expanding electricity access, increasing the share of renewable energy,
+            improving energy efficiency, boosting clean-energy research and investment, and upgrading infrastructure in developing regions.[1], [2]
+          </p>
+          <div class="quote">
+            For students, SDG 7 connects global challenges to everyday life: dorm electricity use, campus transit,
+            indoor air quality, utility bills, internship opportunities, and the technologies engineers are building right now.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="targets">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Official UN targets</span>
+            <h2>The Five SDG 7 Targets</h2>
+          </div>
+          <p>
+            These target statements are adapted from the official United Nations SDG 7 target framework.[1]
+          </p>
+        </div>
+        <div class="targets-grid">
+          <article class="card">
+            <div class="target-number">Target 7.1</div>
+            <h3>Universal Modern Energy Access</h3>
+            <p>By 2030, ensure universal access to affordable, reliable, and modern energy services.[1]</p>
+          </article>
+          <article class="card">
+            <div class="target-number">Target 7.2</div>
+            <h3>Increase Renewables</h3>
+            <p>Substantially increase the share of renewable energy in the global energy mix by 2030.[1]</p>
+          </article>
+          <article class="card">
+            <div class="target-number">Target 7.3</div>
+            <h3>Improve Efficiency</h3>
+            <p>Double the global rate of improvement in energy efficiency by 2030.[1]</p>
+          </article>
+          <article class="card">
+            <div class="target-number">Target 7.a</div>
+            <h3>Expand Research and Investment</h3>
+            <p>Enhance international cooperation on clean-energy research, technology, and investment.[1]</p>
+          </article>
+          <article class="card">
+            <div class="target-number">Target 7.b</div>
+            <h3>Build Infrastructure</h3>
+            <p>Expand and upgrade energy infrastructure and technology for developing countries.[1]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">UN Progress Snapshot</span>
+            <h2>What the 2022 UN Goal 7 Report Highlights</h2>
+          </div>
+          <p>
+            The United Nations’ 2022 Goal 7 report shows that progress continues, but not fast enough to meet 2030 targets.
+            Electricity access has improved, yet hundreds of millions remain unserved, clean cooking access is still far behind,
+            renewable deployment needs to accelerate, and energy-efficiency gains remain below the pace required.[32]
+          </p>
+        </div>
+
+        <div class="progress-grid">
+          <article class="progress-card">
+            <img src="https://unstats.un.org/sdgs/report/2022/svg/goal7-g1.svg" alt="UN Goal 7 electricity access chart" />
+            <h3>Electricity Access Has Improved, But the Hardest Gaps Remain</h3>
+            <p>
+              Global electricity access rose from <strong>83%</strong> in 2010 to <strong>91%</strong> in 2020, reducing the number of people without electricity to
+              <strong>733 million</strong>. But progress has slowed, and if current trends continue, <strong>670 million people</strong> could still be unserved in 2030.[32]
+            </p>
+          </article>
+
+          <article class="progress-card">
+            <img src="https://unstats.un.org/sdgs/report/2022/svg/goal7-g2.svg" alt="UN Goal 7 clean cooking chart" />
+            <h3>Clean Cooking Is Still a Major Global Challenge</h3>
+            <p>
+              By 2020, only <strong>69%</strong> of the global population had access to clean cooking fuels and technologies.
+              That leaves about <strong>2.4 billion people</strong> still relying on polluting and inefficient cooking systems that increase health risks.[32]
+            </p>
+          </article>
+
+          <article class="progress-card">
+            <img src="https://unstats.un.org/sdgs/report/2022/svg/goal7-g3.svg" alt="UN Goal 7 renewable energy share chart" />
+            <h3>Renewables Are Growing, But Not Fast Enough Across All Sectors</h3>
+            <p>
+              Renewables reached <strong>17.7%</strong> of total final energy consumption in 2019. The electricity sector made the fastest gains,
+              rising from <strong>19.7%</strong> in 2010 to <strong>26.2%</strong> in 2019, while progress in heating and transport remained much slower.[32]
+            </p>
+          </article>
+
+          <article class="progress-card">
+            <img src="https://unstats.un.org/sdgs/report/2022/svg/goal7-g4.svg" alt="UN Goal 7 energy intensity chart" />
+            <h3>Energy Efficiency Needs a Much Bigger Push</h3>
+            <p>
+              Global primary energy intensity improved at an average annual rate of <strong>1.9%</strong> from 2010 to 2019.
+              To stay aligned with the 2030 target, improvements need to average about <strong>3.2% per year</strong> going forward.[32]
+            </p>
+          </article>
+        </div>
+
+        <div class="quote">
+          The report also notes that international public financial flows for clean energy in developing countries fell to <strong>$10.9 billion in 2019</strong>,
+          showing that meeting Goal 7 will require much stronger policy support and far greater public and private investment.[32]
+        </div>
+      </div>
+    </section>
+
+    <section id="energy">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Clean energy available now</span>
+            <h2>Major Clean Energy Options in Use Today</h2>
+          </div>
+          <p>
+            The U.S. Department of Energy identifies wind, solar, hydropower, geothermal, bioenergy, and marine energy
+            as major renewable pathways. Nuclear energy is also widely treated as a clean electricity source because it produces carbon-free electricity during operation.[3], [8], [9]
+          </p>
+        </div>
+        <div class="energy-grid">
+          <article class="energy-card card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Solar_PV_panels.jpg" alt="Solar photovoltaic panels" />
+            <div class="energy-content">
+              <span class="tag">Solar</span>
+              <h3>Solar Energy</h3>
+              <p>Solar energy captures sunlight and converts it into electricity or heat. It is widely used in homes, businesses, and large utility-scale arrays, making it one of the most visible and accessible clean-energy technologies today.[9]</p>
+              <div class="energy-meta">
+                <span class="pill">Available now</span>
+                <span class="pill">Distributed generation</span>
+                <span class="pill">Rapidly improving</span>
+              </div>
+              <ul>
+                <li><strong>Current technology:</strong> crystalline-silicon PV, thin-film PV, utility-scale solar farms, rooftop systems.[9]</li>
+                <li><strong>Research/projects:</strong> DOE is advancing perovskite and tandem solar cells to increase efficiency and support future manufacturing scale-up.[10], [11]</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="energy-card card">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Wind_turbines.jpg" alt="Wind turbines" />
+            <div class="energy-content">
+              <span class="tag">Wind</span>
+              <h3>Wind Energy</h3>
+              <p>Wind energy uses moving air to spin turbine blades and generate electricity. It is already a major renewable source on land and is expanding offshore, where stronger and steadier winds can increase output potential.[9]</p>
+              <div class="energy-meta">
+                <span class="pill">Available now</span>
+                <span class="pill">Onshore + offshore</span>
+                <span class="pill">Grid-scale</span>
+              </div>
+              <ul>
+                <li><strong>Current technology:</strong> land-based wind farms and fixed-bottom offshore systems.[9]</li>
+                <li><strong>Research/projects:</strong> DOE is funding floating offshore wind platforms, dynamic cables, and transmission solutions to unlock deeper-water sites.[12], [13]</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="energy-card card">
+            <img src="https://www.innovationnewsnetwork.com/wp-content/uploads/2020/08/Hydropower.jpg" alt="Hydropower dam" />
+            <div class="energy-content">
+              <span class="tag">Water power</span>
+              <h3>Hydropower and Pumped Storage</h3>
+              <p>Hydropower generates electricity from moving water and remains one of the most established renewable sources in the world. Pumped-storage systems also act like large grid batteries by storing energy and releasing it when electricity demand rises.[15], [16]</p>
+              <div class="energy-meta">
+                <span class="pill">Available now</span>
+                <span class="pill">Reliable output</span>
+                <span class="pill">Supports grid stability</span>
+              </div>
+              <ul>
+                <li><strong>Current technology:</strong> conventional hydropower plants and pumped-storage systems.[15], [16]</li>
+                <li><strong>Research/projects:</strong> DOE continues work on next-generation hydropower, marine energy, and storage integration.[15], [17]</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="energy-card card">
+            <img src="https://www.energy.gov/sites/default/files/styles/collection_square/public/2023-06/Geothermal%20heat%20pump%20GHP%20in%20Winter%20Summer_0.gif?itok=wcWiNBHu" alt="Geothermal energy system" />
+            <div class="energy-content">
+              <span class="tag">Geothermal</span>
+              <h3>Geothermal Energy</h3>
+              <p>Geothermal energy uses heat from inside the Earth to produce electricity or provide direct heating. It is valuable because it can deliver steady energy output without depending on sunlight or wind conditions.[18], [20]</p>
+              <div class="energy-meta">
+                <span class="pill">Available now</span>
+                <span class="pill">Steady generation</span>
+                <span class="pill">Low-emission heat source</span>
+              </div>
+              <ul>
+                <li><strong>Current technology:</strong> hydrothermal geothermal plants and direct-use geothermal systems.[18], [20]</li>
+                <li><strong>Research/projects:</strong> DOE supports enhanced geothermal systems and FORGE to expand geothermal access beyond traditional resource areas.[18], [20]</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="energy-card card">
+            <img src="https://bkvenergy.com/wp-content/uploads/2023/11/underwater-tidal-power-turbines.webp" alt="Marine energy turbines underwater" />
+            <div class="energy-content">
+              <span class="tag">Marine</span>
+              <h3>Marine Energy</h3>
+              <p>Marine energy captures power from waves, tides, and ocean currents. It is still developing compared with solar and wind, but it remains an important clean-energy option because oceans contain large amounts of untapped kinetic energy.[19], [21]</p>
+              <div class="energy-meta">
+                <span class="pill">Emerging technology</span>
+                <span class="pill">Ocean-based power</span>
+                <span class="pill">Future potential</span>
+              </div>
+              <ul>
+                <li><strong>Current technology:</strong> pilot wave devices, tidal systems, and prototype marine converters.[19]</li>
+                <li><strong>Research/projects:</strong> DOE supports marine energy materials, manufacturing, and prototype development for long-term commercialization.[19], [21]</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="energy-card card">
+            <img src="https://be-cis.com/wp-content/uploads/2024/12/shutterstock_2447582297.jpg" alt="Bioenergy and hydrogen facility" />
+            <div class="energy-content">
+              <span class="tag">Bioenergy + hydrogen</span>
+              <h3>Bioenergy and Clean Hydrogen</h3>
+              <p>Bioenergy converts organic material into fuels, heat, or electricity, while clean hydrogen can store energy and support industries or transportation systems that are harder to electrify directly. Together, they extend clean-energy use beyond the electric grid alone.[22], [23], [24]</p>
+              <div class="energy-meta">
+                <span class="pill">Available now</span>
+                <span class="pill">Industrial relevance</span>
+                <span class="pill">Decarbonization tool</span>
+              </div>
+              <ul>
+                <li><strong>Current technology:</strong> biofuels, biogas pathways, electrolyzers, and fuel-cell systems.[22], [23], [24]</li>
+                <li><strong>Research/projects:</strong> DOE is scaling sustainable aviation fuels, electrolyzer supply chains, and hydrogen cost reductions.[22], [23], [25]</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="energy-card card">
+            <img src="https://www.constellationenergy.com/content/dam/constellationenergy/images/work/work-open-graph-images/nuclear-og.jpg" alt="Nuclear power plant" />
+            <div class="energy-content">
+              <span class="tag">Nuclear</span>
+              <h3>Nuclear Energy</h3>
+              <p>Nuclear energy produces electricity through controlled fission reactions and stands out for its ability to deliver large amounts of carbon-free power continuously. It remains especially important because it combines low operational emissions with very high reliability.[3], [4], [5], [6]</p>
+              <div class="energy-meta">
+                <span class="pill">Available now</span>
+                <span class="pill">Firm power</span>
+                <span class="pill">High capacity factor</span>
+              </div>
+              <ul>
+                <li><strong>Current technology:</strong> commercial reactors, fuel fabrication, nuclear operations, grid-connected baseload generation.[3], [6]</li>
+                <li><strong>Research/projects:</strong> DOE’s Advanced Reactor Demonstration Program supports advanced reactor deployment and first-of-a-kind risk reduction.[26], [27]</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="engineering">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Engineering perspective</span>
+            <h2>The Role of Engineering in Clean Energy</h2>
+          </div>
+          <p>
+            Clean energy does not scale on ideas alone. It scales through design, testing, safety, manufacturing,
+            operations, economics, and systems integration.
+          </p>
+        </div>
+        <div class="impact-grid">
+          <article class="card">
+            <h3>Design and Build</h3>
+            <p>Engineers create the hardware and infrastructure: reactors, turbines, solar modules, storage systems, transmission lines, substations, and control systems.[9], [26]</p>
+          </article>
+          <article class="card">
+            <h3>Improve Efficiency and Cost</h3>
+            <p>Engineering teams work on materials, manufacturing, digital controls, and system optimization to increase performance and lower lifecycle cost.[10], [11], [12], [23]</p>
+          </article>
+          <article class="card">
+            <h3>Protect Safety and Reliability</h3>
+            <p>Safety engineering, risk analysis, inspection, maintenance, and regulatory compliance are essential for public trust and reliable operations, especially in nuclear systems.[3], [5], [6]</p>
+          </article>
+        </div>
+        <div class="quote">
+          Engineering is where SDG 7 becomes concrete: the mission depends on people who can turn science into systems that actually work in the real world.
+        </div>
+      </div>
+    </section>
+
+    <section id="nuclear">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Why nuclear matters</span>
+            <h2>Why Nuclear Energy Is Specifically Important</h2>
+          </div>
+          <p>
+            Nuclear energy stands out because it can produce large amounts of carbon-free electricity with a very energy-dense fuel source and strong reliability characteristics.[3], [4], [5], [6]
+          </p>
+        </div>
+        <div class="actions-grid">
+          <article class="card">
+            <h3>Reliable Clean Electricity</h3>
+            <p>DOE describes nuclear power as carbon-free electricity that protects air quality while supporting the grid even when weather conditions reduce output from variable sources.[3]</p>
+          </article>
+          <article class="card">
+            <h3>Extremely Energy-Dense Fuel</h3>
+            <p>DOE notes that uranium fuel contains tremendous energy density, which helps reduce fuel volume and support long operating cycles.[6]</p>
+          </article>
+          <article class="card">
+            <h3>Long-Term System Value</h3>
+            <p>Virginia Energy highlights nuclear power as a dependable source that contributes to energy security and low-carbon generation.[4]</p>
+          </article>
+        </div>
+        <div class="about-grid" style="margin-top:1rem;">
+          <article class="about-card">
+            <h3>Advanced Nuclear Is an Active Engineering Field</h3>
+            <p>
+              DOE’s Advanced Reactor Demonstration Program supports cost-shared work with industry to reduce licensing,
+              construction, and operational risk for advanced reactor technologies.[26], [27]
+            </p>
+            <ul>
+              <li>Advanced reactors can expand options for clean electricity, industrial heat, and long-term grid resilience.[26]</li>
+              <li>Nuclear engineers work on reactor systems, fuel cycles, radiation applications, safety, and power production.[5]</li>
+              <li>The BLS lists nuclear engineering as a specialized occupation with strong technical responsibilities and a median annual wage of $127,520 in May 2024.[5]</li>
+            </ul>
+          </article>
+          <article class="about-card">
+            <h3>Challenges Still Matter</h3>
+            <p>Supporting nuclear energy does not mean ignoring tradeoffs. DOE also highlights challenges that include high upfront capital cost, waste management, and complex project delivery.[3]</p>
+            <ul>
+              <li>That is why engineering, policy, regulation, project management, and public communication all matter.</li>
+              <li>For students, nuclear is a strong example of how sustainability problems require both technical depth and societal trust.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Student-centered impact</span>
+            <h2>How Clean Energy Affects Communities and College Students</h2>
+          </div>
+          <p>
+            Clean energy influences public health, cost stability, resilience, and opportunity. That makes it directly relevant to student life, not just national policy.[2], [3], [28], [29]
+          </p>
+        </div>
+        <div class="impact-grid">
+          <article class="card">
+            <h3>Cleaner Air and Health</h3>
+            <p>EPA links cleaner energy systems and pollution reduction to better air quality, lower health risks, and improved public health outcomes.[28], [29]</p>
+          </article>
+          <article class="card">
+            <h3>Campus Resilience</h3>
+            <p>Reliable power affects lighting, internet access, lab work, housing, food systems, and emergency response. Energy infrastructure failures hit students fast.</p>
+          </article>
+          <article class="card">
+            <h3>Career Pipelines</h3>
+            <p>DOE and national laboratories offer internships, fellowships, and student pathways in energy, engineering, research, policy, and operations.[14], [15], [16]</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="get-involved">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Action steps</span>
+            <h2>How College Students Can Get Involved</h2>
+          </div>
+          <p>
+            You do not need to wait until graduation to contribute. Students can enter clean energy through technical,
+            community, and policy pathways.
+          </p>
+        </div>
+        <div class="actions-grid">
+          <article class="card">
+            <h3>Join Research and Internships</h3>
+            <ul>
+              <li>Apply to DOE internships, fellowships, and recent graduate programs.[14], [15]</li>
+              <li>Explore national laboratory internships such as NREL and SULI opportunities.[16], [30]</li>
+              <li>Look for faculty labs in energy systems, materials, grid modeling, nuclear, or sustainability.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Lead on Campus</h3>
+            <ul>
+              <li>Support student chapters tied to ASME, IEEE, SWE, NSBE, ANS, ASCE, or sustainability councils.</li>
+              <li>Push for energy audits, solar projects, smarter building controls, and better transit options.</li>
+              <li>Turn course projects into real campus proposals.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Build Public Understanding</h3>
+            <ul>
+              <li>Use credible sources when discussing renewables, nuclear, storage, and emissions.</li>
+              <li>Translate technical ideas for nontechnical audiences.</li>
+              <li>Vote, advocate, and participate in local energy planning discussions.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Videos</span>
+            <h2>Visual Learning</h2>
+          </div>
+          <p>
+            These videos provide clear explanations of clean energy concepts, SDG 7, and nuclear energy.
+          </p>
+        </div>
+
+        <div class="video-grid">
+          <article class="video-card">
+            <iframe src="https://www.youtube.com/embed/lVgvK8Kfxwc" title="Affordable and Clean Energy SDG 7 video" allowfullscreen></iframe>
+            <div class="video-copy">
+              <h3>Affordable and Clean Energy 🌏♻️ SDG 7 ⚡️ Sustainable Development Goals for Kids</h3>
+              <p>A simple overview of SDG 7 and why affordable, reliable, and clean energy matters.</p>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <iframe src="https://www.youtube.com/embed/reR4oy1KKsQ" title="What Does Clean Energy Look Like? - Climate Action Explained | UNDP | United Nations" allowfullscreen></iframe>
+            <div class="video-copy">
+              <h3>What Does Clean Energy Look Like? - Climate Action Explained | UNDP | United Nations</h3>
+              <p>A short explainer on what clean energy looks like in practice and why it matters globally.</p>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <iframe src="https://www.youtube.com/embed/jpDRfaWYk3I" title="How does a nuclear power plant work?" allowfullscreen></iframe>
+            <div class="video-copy">
+              <h3>How Does a Nuclear Power Plant Work?</h3>
+              <p>A short introduction to how nuclear power works and why it remains part of clean-energy discussions.</p>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <iframe src="https://www.youtube.com/embed/LNQqmpyGTDk" title="How next-gen nuclear could help meet energy demands – and the risks involved" allowfullscreen></iframe>
+            <div class="video-copy">
+              <h3>How Next-Gen Nuclear Could Help Meet Energy Demands – and the Risks Involved</h3>
+              <p>An overview of advanced nuclear technologies, rising energy demand, and the tradeoffs that still need attention.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">About us</span>
+            <h2>About Our Team</h2>
+          </div>
+        </div>
+        <div class="about-grid">
+          <article class="about-card">
+            <p>
+              We are a team of engineering students from the University of South Florida creating a student-focused website on
+              Affordable and Clean Energy, with a special emphasis on nuclear energy as a reliable source of clean power.
+              Our goal is to make clean energy understandable, relevant, and visually engaging for student audiences.
+            </p>
+            <p>
+              We recognize that the climate crisis, pollution, and biodiversity loss are closely tied to overreliance on nonrenewable energy.
+              Because of that, students should understand not only how clean energy helps the environment, but also how it affects the economy,
+              infrastructure, and quality of life.
+            </p>
+          </article>
+          <article class="about-card">
+            <p>
+              Our team is committed to presenting accurate information through clear communication and strong visual design.
+              We want this website to be a starting point for students who are trying to understand clean energy and decide how they can get involved.
+            </p>
+            <ul>
+              <li>Student-friendly explanations</li>
+              <li>Technical and creative teamwork</li>
+              <li>Strong emphasis on accessibility and reliability</li>
+              <li>Motivation for action through advocacy, awareness, and everyday choices</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="references">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">IEEE style</span>
+            <h2>Reference List</h2>
+          </div>
+          <p>
+            These references support the facts summarized throughout the site. Format is adapted to IEEE web citation style.
+          </p>
+        </div>
+        <ol class="references-list">
+          <li>United Nations, “SDG 7 Targets and Indicators,” United Nations. [Online]. Available: https://www.un.org/en/energy/page/sdg7-targets-indicators.</li>
+          <li>United Nations, “Goal 7: Affordable and Clean Energy,” United Nations Sustainable Development. [Online]. Available: https://www.un.org/sustainabledevelopment/energy/.</li>
+          <li>U.S. Department of Energy, “Advantages and Challenges of Nuclear Energy,” Office of Nuclear Energy. [Online]. Available: https://www.energy.gov/ne/articles/advantages-and-challenges-nuclear-energy.</li>
+          <li>Virginia Energy, “Nuclear,” Virginia Energy. [Online]. Available: https://energy.virginia.gov/renewable-energy/Nuclear.shtml.</li>
+          <li>U.S. Bureau of Labor Statistics, “Nuclear Engineers,” Occupational Outlook Handbook. [Online]. Available: https://www.bls.gov/ooh/architecture-and-engineering/nuclear-engineers.htm.</li>
+          <li>U.S. Department of Energy, “Nuclear Fuel Facts: Uranium,” Office of Nuclear Energy. [Online]. Available: https://www.energy.gov/ne/nuclear-fuel-facts-uranium.</li>
+          <li>ENGIE Belgium, “How does nuclear energy work?,” YouTube, Jul. 9, 2021. [Online]. Available: https://www.youtube.com/watch?v=jpDRfaWYk3I.</li>
+          <li>U.S. Department of Energy, “Office of Nuclear Energy,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/ne/office-nuclear-energy.</li>
+          <li>U.S. Department of Energy, “Renewable Energy Pillar,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/renewable-energy-pillar.</li>
+          <li>U.S. Department of Energy, “Perovskite Solar Cells,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/systems/perovskite-solar-cells.</li>
+          <li>U.S. Department of Energy, “Advancing U.S. Thin-Film Solar Photovoltaics Funding Program,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/systems/advancing-us-thin-film-solar-photovoltaics-funding-program.</li>
+          <li>U.S. Department of Energy, “Offshore Wind Research and Development,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/systems/offshore-wind-research-and-development.</li>
+          <li>U.S. Department of Energy, “Floating Offshore Wind Shot: Progress and Priorities,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/floating-offshore-wind-shot-progress-and-priorities.</li>
+          <li>U.S. Department of Energy, “Students & Recent Graduates,” U.S. Department of Energy Careers. [Online]. Available: https://www.energy.gov/careers/students-recent-graduates.</li>
+          <li>U.S. Department of Energy, “Hydropower Program,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/water/hydropower-program.</li>
+          <li>U.S. Department of Energy, “National Renewable Energy Laboratory Undergraduate and Graduate Internships,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/national-renewable-energy-laboratory-undergraduate-and-graduate-internships.</li>
+          <li>U.S. Department of Energy, “How Pumped Storage Hydropower Works,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/water/how-pumped-storage-hydropower-works.</li>
+          <li>U.S. Department of Energy, “Enhanced Geothermal Systems,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/hgeo/geothermal/enhanced-geothermal-systems.</li>
+          <li>U.S. Department of Energy, “Marine Energy Program,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/water/marine-energy-program.</li>
+          <li>U.S. Department of Energy, “Office of Geothermal,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/hgeo/office-geothermal.</li>
+          <li>U.S. Department of Energy, “Materials and Manufacturing for Marine Energy Technologies,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/water/materials-and-manufacturing-marine-energy-technologies.</li>
+          <li>U.S. Department of Energy, “Sustainable Aviation Fuels,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/fuels/sustainable-aviation-fuels.</li>
+          <li>U.S. Department of Energy, “Hydrogen Production: Electrolysis,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/fuels/hydrogen-production-electrolysis.</li>
+          <li>U.S. Department of Energy, “Hydrogen Program,” U.S. Department of Energy. [Online]. Available: https://www.hydrogen.energy.gov/.</li>
+          <li>U.S. Department of Energy, “Hydrogen and Fuel Cell Technologies Office Multi-Year Program Plan,” U.S. Department of Energy. [Online]. Available: https://www.energy.gov/cmei/fuels/hydrogen-and-fuel-cell-technologies-office-multi-year-program-plan.</li>
+          <li>U.S. Department of Energy, “Advanced Reactor Demonstration Program,” Office of Nuclear Energy. [Online]. Available: https://www.energy.gov/ne/advanced-reactor-demonstration-program.</li>
+          <li>U.S. Department of Energy, “Advanced Reactor Demonstration Projects,” Office of Nuclear Energy. [Online]. Available: https://www.energy.gov/ne/advanced-reactor-demonstration-projects.</li>
+          <li>U.S. Environmental Protection Agency, “Clean Energy Programs,” U.S. EPA. [Online]. Available: https://www.epa.gov/energy/clean-energy-programs.</li>
+          <li>U.S. Environmental Protection Agency, “Progress Cleaning the Air and Improving People’s Health,” U.S. EPA. [Online]. Available: https://www.epa.gov/clean-air-act-overview/progress-cleaning-air-and-improving-peoples-health.</li>
+          <li>U.S. Department of Energy Office of Science, “Science Undergraduate Laboratory Internships (SULI),” U.S. DOE Office of Science. [Online]. Available: https://science.osti.gov/wdts/suli.</li>
+          <li>UNDP | United Nations, “What does clean energy look like? - Climate Action Explained,” YouTube. [Online]. Available: https://www.youtube.com/watch?v=reR4oy1KKsQ.</li>
+          <li>United Nations Statistics Division, “The Sustainable Development Goals Report 2022: Goal 7,” United Nations. [Online]. Available: https://unstats.un.org/sdgs/report/2022/goal-07/.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>Built as a student-facing educational website on UN SDG 7: Affordable and Clean Energy.</small>
+      <small>For GitHub Pages, save this file as <strong>index.html</strong> in your repository root.</small>
+    </div>
+  </footer>
+</body>
+</html>
